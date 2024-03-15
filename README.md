@@ -3,6 +3,8 @@ erp-ui
 
 ### Enterprise resource planning application's frontend.
 
+[![Continuous integration](https://github.com/Netsurfclub/erp-ui/actions/workflows/build.yml/badge.svg)](https://github.com/Netsurfclub/erp-ui/actions/workflows/build.yml)
+
 [Contributing Guide](.github/CONTRIBUTING.md)
 
 Prerequisites
