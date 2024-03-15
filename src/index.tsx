@@ -5,6 +5,8 @@ import App from "./components/App";
 
 import { APPLICATION_NAME } from "./constants/app.constants";
 
+import "./index.css";
+
 const root: ReactDOM.Root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
