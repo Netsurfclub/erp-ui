@@ -1,4 +1,4 @@
-const APPLICATION_NAME: string = "ERP";
+const APPLICATION_NAME: string = "erp";
 
 const MAIN_PAGE: KeyValuePair<string, string> = {
   key: "Főoldal",
