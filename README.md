@@ -17,10 +17,21 @@ To avoid any unexpected application behaviour, make sure you have installed the 
 Running project locally
 -----------------------
 
+### Install project dependencies
+
 ```bash
 npm install
+```
 
+### Create .env.local file
+
+Before you start, make sure you create a file called `.env.local` and define an environment variable with the name: `REACT_APP_ERP_API_URL`.
+Set the proper url where you are actually running the GraphQL server application locally to this variable.
+
+### Start application
+
+```bash
 npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To view the application, open [http://localhost:3000](http://localhost:3000) in your web browser.
