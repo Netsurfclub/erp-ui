@@ -36,11 +36,16 @@ interface ProductCardProps {
 interface Product {
   id: number;
   name: string;
-  supplierName: string;
+  supplier: Supplier;
   price: double;
   unit: string;
   photo: string | null;
   onStock: number;
+}
+
+interface Supplier {
+  id: number;
+  name: string;
 }
 
 // Other custom types

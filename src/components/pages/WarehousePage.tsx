@@ -1,38 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { DocumentNode } from "graphql/language";
+import { useQuery, gql } from "@apollo/client";
 
 import ProductCard from "../custom/ProductCard";
 
 const WarehousePage: React.FC<PageProps> = () => {
-  // TODO: Clean up mock data after GraphQL backend is set up.
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "6-os csavar",
-      supplierName: "ACME Corp.",
-      price: 150,
-      unit: "darab",
-      photo: null,
-      onStock: 1000,
-    },
-    {
-      id: 2,
-      name: "6-os csavar alátét (sima)",
-      supplierName: "ACME Corp.",
-      price: 20,
-      unit: "darab",
-      photo: null,
-      onStock: 1000,
-    },
-    {
-      id: 3,
-      name: "6-os csavar alátét (rugós)",
-      supplierName: "ACME Corp.",
-      price: 25,
-      unit: "darab",
-      photo: null,
-      onStock: 1000,
-    },
-  ];
+  const [products, setProducts] = useState<Product[]>([]);
+
+  // TODO: Move GraphQL query to separate file.
+  const GET_PRODUCTS: DocumentNode = gql`
+    query {
+      getProducts {
+        id
+        name
+        supplier {
+          name
+        }
+        price
+        unit
+        photo
+        onStock
+      }
+    }
+  `;
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
+  useEffect(() => {
+    if (!loading && !error) {
+      setProducts(data.getProducts);
+    }
+  }, [loading, error, data]);
 
   return (
     <section className="row">
