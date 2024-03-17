@@ -2,12 +2,12 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./common/Navbar";
+import MainPage from "./pages/MainPage";
 import WarehousePage from "./pages/WarehousePage";
 
 import { MAIN_PAGE, WAREHOUSE_PAGE } from "../constants/app.constants";
 
 import logo from "../images/logo.png";
-import MainPage from "./pages/MainPage";
 
 const App: React.FC<AppProps> = () => {
   const pages: KeyValuePair<string, string>[] = [MAIN_PAGE, WAREHOUSE_PAGE];
