@@ -1,6 +1,7 @@
 // Image types
 
 declare module "*.png";
+declare module "*.jpg";
 
 // Common FC Props types
 

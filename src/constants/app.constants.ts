@@ -10,4 +10,9 @@ const WAREHOUSE_PAGE: KeyValuePair<string, string> = {
   value: "/warehouse",
 };
 
-export { APPLICATION_NAME, MAIN_PAGE, WAREHOUSE_PAGE };
+const ERROR_PAGE: KeyValuePair<string, string> = {
+  key: "Error",
+  value: "/error",
+};
+
+export { APPLICATION_NAME, MAIN_PAGE, WAREHOUSE_PAGE, ERROR_PAGE };
