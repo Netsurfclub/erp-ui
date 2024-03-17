@@ -9,10 +9,14 @@ interface NavbarProps {
   pages: KeyValuePair<string, string>[];
 }
 
-// Custom FC types
+// Custom FC and Page FC Props types
 
 interface AppProps {
   applicationName: string;
+}
+
+interface PageProps {
+  pageName: string;
 }
 
 // Other custom types
