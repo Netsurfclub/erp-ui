@@ -1,28 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { DocumentNode } from "graphql/language";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 import ProductCard from "../custom/ProductCard";
+
+import GET_PRODUCTS from "../../graphql/queries/getProductsQuery";
 
 const WarehousePage: React.FC<PageProps> = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  // TODO: Move GraphQL query to separate file.
-  const GET_PRODUCTS: DocumentNode = gql`
-    query {
-      getProducts {
-        id
-        name
-        supplier {
-          name
-        }
-        price
-        unit
-        photo
-        onStock
-      }
-    }
-  `;
   const { loading, error, data } = useQuery(GET_PRODUCTS);
 
   useEffect(() => {
