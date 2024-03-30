@@ -1,9 +1,9 @@
 import { DocumentNode } from "graphql/language";
 import { gql } from "@apollo/client";
 
-const GET_PRODUCTS: DocumentNode = gql`
+const PRODUCTS: DocumentNode = gql`
   query {
-    getProducts {
+    products {
       id
       name
       supplier {
@@ -17,4 +17,4 @@ const GET_PRODUCTS: DocumentNode = gql`
   }
 `;
 
-export default GET_PRODUCTS;
+export default PRODUCTS;
