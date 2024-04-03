@@ -12,6 +12,12 @@ interface CardProps {
   contents: KeyValuePair<string, string>[];
 }
 
+interface FileInputProps {
+  name: string;
+  disabled: boolean;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+}
+
 interface NavbarProps {
   image: string;
   pages: KeyValuePair<string, string>[];
