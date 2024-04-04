@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useState } from "react";
-import { AxiosError } from "axios";
 
 import Card from "../common/Card";
 import ErrorMessage from "../common/ErrorMessage";
