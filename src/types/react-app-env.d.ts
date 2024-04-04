@@ -13,6 +13,10 @@ interface CardProps {
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
+interface ErrorMessageProps {
+  message: string;
+}
+
 interface FileInputProps {
   name: string;
   disabled: boolean;
