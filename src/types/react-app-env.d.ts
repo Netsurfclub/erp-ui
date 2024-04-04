@@ -9,7 +9,7 @@ interface CardProps {
   title: string;
   image: string;
   imageAlt: string;
-  contents: KeyValuePair<string, string>[];
+  contents: KeyValuePair<number, string>[];
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
 

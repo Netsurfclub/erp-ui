@@ -46,8 +46,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       image={image}
       imageAlt={name}
       contents={[
-        { key: "supplierName", value: `Beszállító: ${supplierName}` },
-        { key: "onStock", value: `Raktáron: ${onStock} ${unit}` },
+        { key: 1, value: `Beszállító: ${supplierName}` },
+        { key: 2, value: `Raktáron: ${onStock} ${unit}` },
       ]}
       onChange={handlePhotoUpload}
     />
