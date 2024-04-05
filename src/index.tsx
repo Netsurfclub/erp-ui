@@ -18,7 +18,7 @@ const root: ReactDOM.Root = ReactDOM.createRoot(
 );
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  uri: process.env.REACT_APP_ERP_API_URL,
+  uri: process.env.REACT_APP_ERP_API_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
