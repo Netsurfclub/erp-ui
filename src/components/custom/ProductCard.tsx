@@ -52,6 +52,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     image = noImage;
   }
 
+  // TODO: Refactor error message to be a toast notification.
   const errorMessageComponent = (
     <ErrorMessage message={shouldShowErrorMessage.errorMessage} />
   );
