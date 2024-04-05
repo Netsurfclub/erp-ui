@@ -52,6 +52,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     image = noImage;
   }
 
+  const errorMessageComponent = (
+    <ErrorMessage message={shouldShowErrorMessage.errorMessage} />
+  );
+
   return (
     <React.Fragment>
       <Card
@@ -65,9 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         ]}
         onChange={handlePhotoUpload}
       />
-      {shouldShowErrorMessage.shouldShow && (
-        <ErrorMessage message={shouldShowErrorMessage.errorMessage} />
-      )}
+      {shouldShowErrorMessage.shouldShow && errorMessageComponent}
     </React.Fragment>
   );
 };
