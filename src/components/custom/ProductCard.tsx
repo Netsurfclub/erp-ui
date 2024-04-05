@@ -1,16 +1,18 @@
 import React, { ChangeEvent, useState } from "react";
-import { ToastContainer, toast, Bounce } from "react-toastify";
 
 import Card from "../common/Card";
+import ErrorMessage from "../common/ErrorMessage";
 
 import { uploadPhoto } from "../../http/productPhotoService";
-
-import "react-toastify/dist/ReactToastify.css";
 
 import noImage from "../../images/no-image.png";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [uploadedPhotoFileName, setUploadedPhotoFileName] = useState("");
+  const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState({
+    shouldShow: false,
+    errorMessage: "",
+  });
 
   const handlePhotoUpload = async (
     event: ChangeEvent<HTMLInputElement>,
@@ -26,19 +28,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       const { data: fileName } = await uploadPhoto(id, formData);
 
       setUploadedPhotoFileName(fileName);
+      setShouldShowErrorMessage({ shouldShow: false, errorMessage: "" });
 
       // @ts-ignore
     } catch (axiosError: AxiosError) {
-      toast.error(axiosError.response?.data, {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
+      setShouldShowErrorMessage({
+        shouldShow: true,
+        errorMessage: axiosError.response.data,
       });
     }
   };
@@ -56,6 +52,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     image = noImage;
   }
 
+  // TODO: Refactor error message to be a toast notification.
+  const errorMessageComponent = (
+    <ErrorMessage message={shouldShowErrorMessage.errorMessage} />
+  );
+
   return (
     <React.Fragment>
       <Card
@@ -69,18 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         ]}
         onChange={handlePhotoUpload}
       />
-      <ToastContainer
-        position="top-left"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      {shouldShowErrorMessage.shouldShow && errorMessageComponent}
     </React.Fragment>
   );
 };
