@@ -8,7 +8,9 @@ import PRODUCTS from "../../graphql/queries/productsQuery";
 const WarehousePage: React.FC<PageProps> = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  const { loading, error, data } = useQuery(PRODUCTS);
+  const { loading, error, data } = useQuery(PRODUCTS, {
+    fetchPolicy: "network-only",
+  });
 
   useEffect(() => {
     if (!loading && !error) {
