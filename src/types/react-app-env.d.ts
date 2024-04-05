@@ -20,16 +20,6 @@ interface CardProps {
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-interface ErrorMessageProps {
-  message: string;
-}
-
-interface FileInputProps {
-  name: string;
-  disabled: boolean;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-}
-
 interface DropdownProps {
   name: string;
   value: string;
