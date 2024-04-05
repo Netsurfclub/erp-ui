@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 
 import Card from "../common/Card";
-import ErrorMessage from "../common/ErrorMessage";
 
 import { uploadPhoto } from "../../http/productPhotoService";
 
@@ -9,10 +8,6 @@ import noImage from "../../images/no-image.png";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [uploadedPhotoFileName, setUploadedPhotoFileName] = useState("");
-  const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState({
-    shouldShow: false,
-    errorMessage: "",
-  });
 
   const handlePhotoUpload = async (
     event: ChangeEvent<HTMLInputElement>,
@@ -28,14 +23,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       const { data: fileName } = await uploadPhoto(id, formData);
 
       setUploadedPhotoFileName(fileName);
-      setShouldShowErrorMessage({ shouldShow: false, errorMessage: "" });
+
+      // TODO: Display a success toast notification.
 
       // @ts-ignore
     } catch (axiosError: AxiosError) {
-      setShouldShowErrorMessage({
-        shouldShow: true,
-        errorMessage: axiosError.response.data,
-      });
+      // TODO: Display an error toast notification.
     }
   };
 
@@ -52,11 +45,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     image = noImage;
   }
 
-  // TODO: Refactor error message to be a toast notification.
-  const errorMessageComponent = (
-    <ErrorMessage message={shouldShowErrorMessage.errorMessage} />
-  );
-
   return (
     <React.Fragment>
       <Card
@@ -70,7 +58,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         ]}
         onChange={handlePhotoUpload}
       />
-      {shouldShowErrorMessage.shouldShow && errorMessageComponent}
     </React.Fragment>
   );
 };
