@@ -3,16 +3,16 @@ import { useQuery } from "@apollo/client";
 
 import ProductCard from "../custom/ProductCard";
 
-import GET_PRODUCTS from "../../graphql/queries/getProductsQuery";
+import PRODUCTS from "../../graphql/queries/productsQuery";
 
 const WarehousePage: React.FC<PageProps> = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
+  const { loading, error, data } = useQuery(PRODUCTS);
 
   useEffect(() => {
     if (!loading && !error) {
-      setProducts(data.getProducts);
+      setProducts(data.products);
     }
   }, [loading, error, data]);
 
