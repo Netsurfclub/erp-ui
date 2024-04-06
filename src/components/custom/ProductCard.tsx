@@ -5,7 +5,15 @@ import Card from "../common/Card";
 
 import { uploadPhoto } from "../../http/productPhotoService";
 
-import { NETWORK_ERROR } from "../../constants/app.constants";
+import {
+  FORM_DATA_NAME_FILE,
+  PHOTO_UPLOAD_PROGRESS_MESSAGE,
+  PHOTO_UPLOAD_SUCCESS_MESSAGE,
+  PHOTO_UPLOAD_ERROR_MESSAGE,
+  NETWORK_ERROR_CODE,
+  INTERNET_CONNECTION_ERROR_MESSAGE,
+  TOAST_NOTIFICATION_DURATION,
+} from "../../constants/app.constants";
 
 import noImage from "../../images/no-image.png";
 
@@ -21,14 +29,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       }
 
       const formData = new FormData();
-      formData.append("file", event.target.files[0]);
+      formData.append(FORM_DATA_NAME_FILE, event.target.files[0]);
 
       const { data: fileName } = await toast.promise(
         uploadPhoto(id, formData),
         {
-          loading: "Fénykép feltöltése...",
-          success: "Fénykép feltötése sikeres volt.",
-          error: "Fénykép feltötése sikertelen volt.",
+          loading: PHOTO_UPLOAD_PROGRESS_MESSAGE,
+          success: PHOTO_UPLOAD_SUCCESS_MESSAGE,
+          error: PHOTO_UPLOAD_ERROR_MESSAGE,
         },
       );
 
@@ -36,8 +44,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       // @ts-ignore
     } catch (axiosError: AxiosError) {
-      if (axiosError.code === NETWORK_ERROR) {
-        toast.error("Nincs internetkapcsolat.");
+      if (axiosError.code === NETWORK_ERROR_CODE) {
+        toast.error(INTERNET_CONNECTION_ERROR_MESSAGE);
       } else {
         toast.error(axiosError.response?.data);
       }
@@ -73,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <Toaster
         position="top-center"
         reverseOrder={false}
-        toastOptions={{ duration: 3500 }}
+        toastOptions={{ duration: TOAST_NOTIFICATION_DURATION }}
       />
     </React.Fragment>
   );
