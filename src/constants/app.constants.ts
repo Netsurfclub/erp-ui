@@ -30,7 +30,7 @@ const INTERNET_CONNECTION_ERROR_MESSAGE: string = "Nincs internetkapcsolat.";
 // Miscellaneous constants
 
 const FORM_DATA_NAME_FILE: string = "file";
-const TOAST_NOTIFICATION_DURATION: number = 3500;
+const TOAST_NOTIFICATION_DURATION: number = 2500;
 
 export {
   APPLICATION_NAME,
