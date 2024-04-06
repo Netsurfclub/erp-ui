@@ -73,7 +73,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <Toaster
         position="top-center"
         reverseOrder={false}
-        toastOptions={{ duration: 2000 }}
+        toastOptions={{ duration: 3500 }}
       />
     </React.Fragment>
   );
