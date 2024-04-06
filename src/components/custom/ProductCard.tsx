@@ -1,18 +1,24 @@
 import React, { ChangeEvent, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
 
 import Card from "../common/Card";
-import ErrorMessage from "../common/ErrorMessage";
 
 import { uploadPhoto } from "../../http/productPhotoService";
+
+import {
+  FORM_DATA_NAME_FILE,
+  PHOTO_UPLOAD_PROGRESS_MESSAGE,
+  PHOTO_UPLOAD_SUCCESS_MESSAGE,
+  PHOTO_UPLOAD_ERROR_MESSAGE,
+  NETWORK_ERROR_CODE,
+  INTERNET_CONNECTION_ERROR_MESSAGE,
+  TOAST_NOTIFICATION_DURATION,
+} from "../../constants/app.constants";
 
 import noImage from "../../images/no-image.png";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [uploadedPhotoFileName, setUploadedPhotoFileName] = useState("");
-  const [shouldShowErrorMessage, setShouldShowErrorMessage] = useState({
-    shouldShow: false,
-    errorMessage: "",
-  });
 
   const handlePhotoUpload = async (
     event: ChangeEvent<HTMLInputElement>,
@@ -23,19 +29,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       }
 
       const formData = new FormData();
-      formData.append("file", event.target.files[0]);
+      formData.append(FORM_DATA_NAME_FILE, event.target.files[0]);
 
-      const { data: fileName } = await uploadPhoto(id, formData);
+      const { data: fileName } = await toast.promise(
+        uploadPhoto(id, formData),
+        {
+          loading: PHOTO_UPLOAD_PROGRESS_MESSAGE,
+          success: PHOTO_UPLOAD_SUCCESS_MESSAGE,
+          error: PHOTO_UPLOAD_ERROR_MESSAGE,
+        },
+      );
 
       setUploadedPhotoFileName(fileName);
-      setShouldShowErrorMessage({ shouldShow: false, errorMessage: "" });
 
       // @ts-ignore
     } catch (axiosError: AxiosError) {
-      setShouldShowErrorMessage({
-        shouldShow: true,
-        errorMessage: axiosError.response.data,
-      });
+      if (axiosError.code === NETWORK_ERROR_CODE) {
+        toast.error(INTERNET_CONNECTION_ERROR_MESSAGE);
+      } else {
+        toast.error(axiosError.response?.data);
+      }
     }
   };
 
@@ -52,11 +65,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     image = noImage;
   }
 
-  // TODO: Refactor error message to be a toast notification.
-  const errorMessageComponent = (
-    <ErrorMessage message={shouldShowErrorMessage.errorMessage} />
-  );
-
   return (
     <React.Fragment>
       <Card
@@ -70,7 +78,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         ]}
         onChange={handlePhotoUpload}
       />
-      {shouldShowErrorMessage.shouldShow && errorMessageComponent}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{ duration: TOAST_NOTIFICATION_DURATION }}
+      />
     </React.Fragment>
   );
 };
