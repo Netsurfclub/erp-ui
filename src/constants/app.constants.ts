@@ -15,4 +15,12 @@ const ERROR_PAGE: KeyValuePair<string, string> = {
   value: "/error",
 };
 
-export { APPLICATION_NAME, MAIN_PAGE, WAREHOUSE_PAGE, ERROR_PAGE };
+const NETWORK_ERROR: string = "ERR_NETWORK";
+
+export {
+  APPLICATION_NAME,
+  MAIN_PAGE,
+  WAREHOUSE_PAGE,
+  ERROR_PAGE,
+  NETWORK_ERROR,
+};

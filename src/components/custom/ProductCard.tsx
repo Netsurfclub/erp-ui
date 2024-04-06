@@ -5,6 +5,8 @@ import Card from "../common/Card";
 
 import { uploadPhoto } from "../../http/productPhotoService";
 
+import { NETWORK_ERROR } from "../../constants/app.constants";
+
 import noImage from "../../images/no-image.png";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
@@ -34,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       // @ts-ignore
     } catch (axiosError: AxiosError) {
-      if (axiosError.code === "ERR_NETWORK") {
+      if (axiosError.code === NETWORK_ERROR) {
         toast.error("Nincs internetkapcsolat.");
       } else {
         toast.error(axiosError.response?.data);
