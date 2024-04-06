@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
 
 import Card from "../common/Card";
 
@@ -20,15 +21,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       const formData = new FormData();
       formData.append("file", event.target.files[0]);
 
-      const { data: fileName } = await uploadPhoto(id, formData);
+      const { data: fileName } = await toast.promise(
+        uploadPhoto(id, formData),
+        {
+          loading: "Fénykép feltöltése...",
+          success: "Fénykép feltötése sikeres volt.",
+          error: "Fénykép feltötése sikertelen volt.",
+        },
+      );
 
       setUploadedPhotoFileName(fileName);
 
-      // TODO: Display a success toast notification.
-
       // @ts-ignore
     } catch (axiosError: AxiosError) {
-      // TODO: Display an error toast notification.
+      const { response: axiosErrorResponse } = axiosError;
+      const { data: errorMessage } = axiosErrorResponse;
+
+      toast.error(errorMessage);
     }
   };
 
@@ -57,6 +66,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           { key: 2, value: `Raktáron: ${onStock} ${unit}` },
         ]}
         onChange={handlePhotoUpload}
+      />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{ duration: 2000 }}
       />
     </React.Fragment>
   );
