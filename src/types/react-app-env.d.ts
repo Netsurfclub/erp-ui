@@ -29,10 +29,6 @@ interface DropdownProps {
   onChange: ChangeEventHandler<HTMLSelectElement>;
 }
 
-interface ErrorMessageProps {
-  message: string;
-}
-
 interface FileInputProps {
   name: string;
   disabled: boolean;
