@@ -34,10 +34,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       // @ts-ignore
     } catch (axiosError: AxiosError) {
-      const { response: axiosErrorResponse } = axiosError;
-      const { data: errorMessage } = axiosErrorResponse;
-
-      toast.error(errorMessage);
+      if (axiosError.code === "ERR_NETWORK") {
+        toast.error("Nincs internetkapcsolat.");
+      } else {
+        toast.error(axiosError.response?.data);
+      }
     }
   };
 
