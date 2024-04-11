@@ -6,10 +6,7 @@ export default defineConfig(({ mode }) => {
   const env: Record<string, string> = loadEnv(mode, process.cwd(), "");
 
   return {
-    server: {
-      port: 3000,
-      strictPort: true,
-    },
+    server: { port: 3000, strictPort: true },
     define: {
       "process.env.VITE_ERP_API_GRAPHQL_ENDPOINT": JSON.stringify(
         env.VITE_ERP_API_GRAPHQL_ENDPOINT,
