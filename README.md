@@ -43,7 +43,7 @@ npm run dev
 ```bash
 docker build -t <image-name>:<tag> .
 
-docker run -p 5174:5174 <image-name>:<tag>
+docker run -p 3000:3000 <image-name>:<tag>
 ```
 
-#### To view the application, open [http://localhost:5174](http://localhost:5174) in your web browser.
+#### To view the application, open [http://localhost:3000](http://localhost:3000) in your web browser.
