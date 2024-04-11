@@ -14,11 +14,11 @@ import { APPLICATION_NAME } from "./constants/app.constants";
 import "./index.css";
 
 const root: ReactDOM.Root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
+  document.getElementById("root")!,
 );
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  uri: process.env.REACT_APP_ERP_API_GRAPHQL_ENDPOINT,
+  uri: process.env.VITE_ERP_API_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
 });
 

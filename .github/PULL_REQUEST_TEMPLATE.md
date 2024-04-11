@@ -1,6 +1,6 @@
 ### Please verify that:
 
-- [ ] `npm run start` run
+- [ ] `npm run dev` run
 
 ### :pencil: Description
 

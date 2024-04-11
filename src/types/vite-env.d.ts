@@ -24,7 +24,7 @@ interface DropdownProps {
   name: string;
   value: string;
   labelText: string;
-  data: any[];
+  // data: any[];
   errorMessage: string;
   onChange: ChangeEventHandler<HTMLSelectElement>;
 }
@@ -40,7 +40,7 @@ interface FileInputProps {
 }
 
 interface ListGroupProps {
-  collection: any[];
+  // collection: any[];
 }
 
 interface ModalWindowProps {
@@ -78,8 +78,8 @@ interface NumberInputProps {
 
 interface TableProps {
   caption: string;
-  columns: any[];
-  collection: any[];
+  // columns: any[];
+  // collection: any[];
 }
 
 interface TextInputProps {

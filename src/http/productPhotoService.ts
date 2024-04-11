@@ -5,7 +5,7 @@ const uploadPhoto = (
   formData: FormData,
 ): Promise<AxiosResponse> => {
   return axios.post(
-    `${process.env.REACT_APP_PHOTO_UPLOAD_ENDPOINT}/${productId}`,
+    `${process.env.VITE_PHOTO_UPLOAD_ENDPOINT}/${productId}`,
     formData,
   );
 };
