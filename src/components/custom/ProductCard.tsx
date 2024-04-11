@@ -15,7 +15,7 @@ import {
   TOAST_NOTIFICATION_DURATION,
 } from "../../constants/app.constants";
 
-import noImage from "../../images/no-image.png";
+import noImage from "../../assets/no-image.png";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [uploadedPhotoFileName, setUploadedPhotoFileName] = useState("");
@@ -42,7 +42,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       setUploadedPhotoFileName(fileName);
 
-      // @ts-ignore
+      // @ts-expect-error: Exception must be an AxiosError to display the error message in the error toast below (axiosError.response?.data),
+      // but if we import the type itself the app will fail to compile source code.
     } catch (axiosError: AxiosError) {
       if (axiosError.code === NETWORK_ERROR_CODE) {
         // TODO: In case of uploading image with unsupported file extension, toast notification appears only for the first try.
@@ -59,9 +60,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   let image;
 
   if (photoFileName) {
-    image = `${process.env.REACT_APP_PHOTO_RETRIEVE_ENDPOINT}/${photoFileName}`;
+    image = `${process.env.VITE_PHOTO_RETRIEVE_ENDPOINT}/${photoFileName}`;
   } else if (uploadedPhotoFileName) {
-    image = `${process.env.REACT_APP_PHOTO_RETRIEVE_ENDPOINT}/${uploadedPhotoFileName}`;
+    image = `${process.env.VITE_PHOTO_RETRIEVE_ENDPOINT}/${uploadedPhotoFileName}`;
   } else {
     image = noImage;
   }
