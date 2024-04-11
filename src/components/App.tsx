@@ -12,7 +12,7 @@ import {
   ERROR_PAGE,
 } from "../constants/app.constants";
 
-import logo from "../images/logo.png";
+import logo from "../assets/logo.png";
 
 const App: React.FC<AppProps> = () => {
   const pages: KeyValuePair<string, string>[] = [MAIN_PAGE, WAREHOUSE_PAGE];

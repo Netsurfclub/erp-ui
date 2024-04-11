@@ -6,7 +6,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   name,
   value,
   labelText,
-  data,
+  // data,
   errorMessage,
   onChange,
 }) => {
@@ -22,11 +22,11 @@ const Dropdown: React.FC<DropdownProps> = ({
           onChange={onChange}
         >
           <option value={0}>{""}</option>
-          {data.map((item) => (
+          {/*data.map((item) => (
             <option key={item.id} value={item.id}>
               {item.name}
             </option>
-          ))}
+          ))*/}
         </select>
       </div>
       {errorMessage && <ErrorMessage message={errorMessage} />}
