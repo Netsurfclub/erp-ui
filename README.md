@@ -38,12 +38,14 @@ Set the proper URLs where you are actually running the GraphQL server applicatio
 npm run dev
 ```
 
+#### To view the application, open [http://localhost:3000](http://localhost:3000) in your web browser.
+
 ### Start application with Docker:
 
 ```bash
 docker build -t <image-name>:<tag> .
 
-docker run -p 3000:3000 <image-name>:<tag>
+docker run -p 80:80 <image-name>:<tag>
 ```
 
-#### To view the application, open [http://localhost:3000](http://localhost:3000) in your web browser.
+#### To view the application, open [http://localhost:80](http://localhost:80) in your web browser.
