@@ -1,6 +1,6 @@
 import React from "react";
 
-import image from "../../images/unplugged_cable.jpg";
+import image from "../../assets/unplugged_cable.jpg";
 
 const ErrorPage: React.FC<PageProps> = () => {
   return (

@@ -13,16 +13,12 @@ import { APPLICATION_NAME } from "./constants/app.constants";
 
 import "./index.css";
 
-const root: ReactDOM.Root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
-);
-
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  uri: process.env.REACT_APP_ERP_API_GRAPHQL_ENDPOINT,
+  uri: process.env.VITE_ERP_API_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
-root.render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <App applicationName={APPLICATION_NAME} />
