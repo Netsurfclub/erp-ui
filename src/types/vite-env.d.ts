@@ -16,6 +16,7 @@ interface CardProps {
   title: string;
   image: string;
   imageAlt: string;
+  acceptedFileExtensions: string;
   contents: KeyValuePair<number, string>[];
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
@@ -35,6 +36,7 @@ interface ErrorMessageProps {
 
 interface FileInputProps {
   name: string;
+  acceptedFileExtensions: string;
   disabled: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
 }

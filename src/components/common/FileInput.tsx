@@ -1,10 +1,15 @@
 import React from "react";
 
-const FileInput: React.FC<FileInputProps> = ({ name, disabled, onChange }) => {
+const FileInput: React.FC<FileInputProps> = ({
+  name,
+  acceptedFileExtensions,
+  disabled,
+  onChange,
+}) => {
   return (
     <input
       type="file"
-      accept=".jpg, .jpeg, .png, .bmp"
+      accept={acceptedFileExtensions}
       id={name}
       name={name}
       className="form-control-file"
