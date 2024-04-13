@@ -4,6 +4,7 @@ const FileInput: React.FC<FileInputProps> = ({ name, disabled, onChange }) => {
   return (
     <input
       type="file"
+      accept=".jpg, .jpeg, .png, .bmp"
       id={name}
       name={name}
       className="form-control-file"
