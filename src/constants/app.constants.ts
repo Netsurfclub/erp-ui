@@ -19,6 +19,11 @@ const ERROR_PAGE: KeyValuePair<string, string> = {
   value: "/error",
 };
 
+const ALL_PATHS: KeyValuePair<string, string> = {
+  key: "All paths",
+  value: "*",
+};
+
 // User-friendly message constants
 
 const PHOTO_UPLOAD_PROGRESS_MESSAGE: string = "Fénykép feltöltése...";
@@ -37,6 +42,7 @@ export {
   MAIN_PAGE,
   WAREHOUSE_PAGE,
   ERROR_PAGE,
+  ALL_PATHS,
   PHOTO_UPLOAD_PROGRESS_MESSAGE,
   PHOTO_UPLOAD_SUCCESS_MESSAGE,
   PHOTO_UPLOAD_ERROR_MESSAGE,

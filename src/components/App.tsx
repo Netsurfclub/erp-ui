@@ -10,6 +10,7 @@ import {
   MAIN_PAGE,
   WAREHOUSE_PAGE,
   ERROR_PAGE,
+  ALL_PATHS,
 } from "../constants/app.constants";
 
 import logo from "../assets/logo.png";
@@ -36,7 +37,10 @@ const App: React.FC<AppProps> = () => {
           <Route path={MAIN_PAGE.value} element={mainPageComponent} />
           <Route path={WAREHOUSE_PAGE.value} element={warehousePageComponent} />
           <Route path={ERROR_PAGE.value} element={errorPageComponent} />
-          <Route path={"*"} element={navigationComponentToErrorPage} />
+          <Route
+            path={ALL_PATHS.value}
+            element={navigationComponentToErrorPage}
+          />
         </Routes>
       </main>
     </BrowserRouter>
