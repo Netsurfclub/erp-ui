@@ -42,8 +42,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       setUploadedPhotoFileName(fileName);
 
-      // @ts-expect-error: Exception must be an AxiosError to display the error message in the error toast below (axiosError.response?.data),
-      // but if we import the type itself the app will fail to compile source code.
+      // @ts-expect-error: Exception must be an AxiosError to display the error message in
+      // the error toast below (axiosError.response?.data), but if we import the type itself
+      // the app will fail to compile source code.
     } catch (axiosError: AxiosError) {
       if (axiosError.code === NETWORK_ERROR_CODE) {
         // TODO: In case of uploading image with unsupported file extension, toast notification appears only for the first try.
