@@ -5,11 +5,13 @@ import ProductCard from "../custom/ProductCard";
 
 import PRODUCTS from "../../graphql/queries/productsQuery";
 
+import { NETWORK_ONLY } from "../../constants/app.constants.ts";
+
 const WarehousePage: React.FC<PageProps> = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   const { loading, error, data } = useQuery(PRODUCTS, {
-    fetchPolicy: "network-only",
+    fetchPolicy: NETWORK_ONLY,
   });
 
   useEffect(() => {
