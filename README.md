@@ -1,5 +1,5 @@
 erp-ui
-============
+======
 
 ### Enterprise resource planning application's frontend.
 
