@@ -43,6 +43,8 @@ npm run dev
 ### Start application with Docker:
 
 ```bash
+npm run build
+
 docker build -t <image-name>:<tag> .
 
 docker run -p 80:80 <image-name>:<tag>
