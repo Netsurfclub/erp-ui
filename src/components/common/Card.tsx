@@ -6,6 +6,7 @@ const Card: React.FC<CardProps> = ({
   title,
   image,
   imageAlt,
+  acceptedFileExtensions,
   contents,
   onChange,
 }) => {
@@ -28,6 +29,7 @@ const Card: React.FC<CardProps> = ({
         />
         <FileInput
           name={photoUploadName}
+          acceptedFileExtensions={acceptedFileExtensions}
           disabled={!image.includes("no-image")}
           onChange={onChange}
         />

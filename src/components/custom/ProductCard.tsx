@@ -74,6 +74,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         title={name}
         image={image}
         imageAlt={name}
+        acceptedFileExtensions={".jpg, .jpeg, .png, .bmp"}
         contents={[
           { key: 1, value: `Beszállító: ${supplierName}` },
           { key: 2, value: `Raktáron: ${onStock} ${unit}` },
