@@ -47,6 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       // the app will fail to compile source code.
     } catch (axiosError: AxiosError) {
       if (axiosError.code === NETWORK_ERROR_CODE) {
+        // TODO: In case of uploading image with unsupported file extension, toast notification appears only for the first try.
         toast.error(INTERNET_CONNECTION_ERROR_MESSAGE);
       } else {
         toast.error(axiosError.response?.data);
